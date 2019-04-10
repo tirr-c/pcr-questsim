@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es5",
+    "lib": [
+      "es2018",
+      "dom",
+      "dom.iterable"
+    ],
+    "jsx": "react",
+    "sourceMap": true
+  },
+  "include": ["./**/*"]
+}

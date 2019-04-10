@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "strict": true,
+    "preserveConstEnums": true,
+    "esModuleInterop": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "types"
+    ]
+  },
+  "include": ["./*.ts"]
+}

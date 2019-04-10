@@ -1,0 +1,44 @@
+{
+  "name": "pcrfarm",
+  "version": "0.1.0",
+  "repository": "https://github.com/tirr-c/pcrfarm.git",
+  "author": "Wonwoo Choi <chwo9843@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "webpack-dev-server -r ts-node/register --config webpack.dev.ts",
+    "build": "webpack -r ts-node/register --config webpack.prod.ts"
+  },
+  "devDependencies": {
+    "@types/html-webpack-plugin": "^3.2.0",
+    "@types/mini-css-extract-plugin": "^0.2.0",
+    "@types/webpack": "^4.4.27",
+    "@types/webpack-dev-server": "^3.1.5",
+    "@types/webpack-env": "^1.13.9",
+    "@types/webpack-merge": "^4.1.3",
+    "@types/webpackbar": "^2.6.0",
+    "clean-webpack-plugin": "^2.0.1",
+    "css-loader": "^2.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.6.0",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^5.3.3",
+    "ts-node": "^8.0.3",
+    "typescript": "^3.4.3",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.3.1",
+    "webpack-merge": "^4.2.1",
+    "webpackbar": "^3.1.5"
+  },
+  "dependencies": {
+    "@types/react": "^16.8.13",
+    "@types/react-dom": "^16.8.3",
+    "apollo-boost": "^0.3.1",
+    "graphql": "^14.2.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
