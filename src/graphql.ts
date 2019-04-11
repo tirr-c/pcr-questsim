@@ -1,7 +1,11 @@
+import React from 'react';
 import { InMemoryCache, IntrospectionFragmentMatcher, NormalizedCacheObject } from 'apollo-cache-inmemory';
 import ApolloClient, { ApolloQueryResult } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import gql from 'graphql-tag';
+
+export type Client = ApolloClient<NormalizedCacheObject>;
+export const GqlContext = React.createContext<{ client?: Client }>({ client: undefined });
 
 const gqlGetQuestDrops = require('./queries/getQuestDrops.gql');
 export type EnemyData = {
@@ -37,7 +41,7 @@ export type GetQuestDropsData = {
     };
 };
 
-export async function setupApolloClient(endpoint: string): Promise<ApolloClient<NormalizedCacheObject>> {
+export async function setupApolloClient(endpoint: string): Promise<Client> {
     const result = await (await fetch(endpoint, {
         method: 'POST',
         headers: {
@@ -79,7 +83,7 @@ export async function setupApolloClient(endpoint: string): Promise<ApolloClient<
 }
 
 export function getQuestDrops(
-    client: ApolloClient<NormalizedCacheObject>,
+    client: Client,
     partialName: string,
     type: 'NORMAL' | 'HARD',
 ): Promise<ApolloQueryResult<GetQuestDropsData>> {

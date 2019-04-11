@@ -8,6 +8,7 @@ import CleanWebpackPlugin from 'clean-webpack-plugin';
 import WebpackBar from 'webpackbar';
 
 const amesEndpoint = process.env.AMES_ENDPOINT || 'https://ames.tirr.dev/graphql';
+const amesStatics = process.env.AMES_STATICS || 'https://ames-static.tirr.dev';
 
 const config: webpack.Configuration = {
     entry: {
@@ -35,6 +36,7 @@ const config: webpack.Configuration = {
     plugins: [
         new webpack.DefinePlugin({
             AMES_ENDPOINT: JSON.stringify(amesEndpoint),
+            AMES_STATICS: JSON.stringify(amesStatics),
         }),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({

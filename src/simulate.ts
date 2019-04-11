@@ -2,11 +2,11 @@ import * as random from 'random-js';
 
 import { EnemyData, GetQuestDropsData, RewardData } from './graphql';
 
-interface Rated {
+export interface Rated {
     rate: number;
 }
 
-interface Drop {
+export interface Drop {
     wave: number;
     enemy: EnemyData;
     mana: number;
