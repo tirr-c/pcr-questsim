@@ -1,0 +1,30 @@
+query getQuestDrops($partialName: String!, $type: QuestAreaType!) {
+    quest(partialName: $partialName, type: $type) {
+        waveGroups {
+            possibleWaves {
+                rate
+                drops: enemies {
+                    by: enemy {
+                        name
+                    }
+                    mana: dropMana
+                    reward: dropReward {
+                        rate
+                        ... on DropEquipment {
+                            equipment {
+                                id
+                                name
+                            }
+                        }
+                        ... on DropItem {
+                            item {
+                                id
+                                name
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

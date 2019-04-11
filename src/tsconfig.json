@@ -2,6 +2,7 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "module": "esnext",
+    "moduleResolution": "node",
     "target": "es5",
     "lib": [
       "es2018",

@@ -7,6 +7,8 @@ import postcssPresetEnv from 'postcss-preset-env';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import WebpackBar from 'webpackbar';
 
+const amesEndpoint = process.env.AMES_ENDPOINT || 'https://ames.tirr.dev/graphql';
+
 const config: webpack.Configuration = {
     entry: {
         app: './src/index.tsx',
@@ -21,12 +23,19 @@ const config: webpack.Configuration = {
                 use: 'ts-loader',
                 exclude: /node_modules/,
             },
+            {
+                test: /\.(graphql|gql)$/,
+                use: 'graphql-tag/loader',
+            },
         ],
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
     },
     plugins: [
+        new webpack.DefinePlugin({
+            AMES_ENDPOINT: JSON.stringify(amesEndpoint),
+        }),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             meta: {
