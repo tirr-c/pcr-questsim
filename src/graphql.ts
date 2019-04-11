@@ -6,9 +6,13 @@ import gql from 'graphql-tag';
 const gqlGetQuestDrops = require('./queries/getQuestDrops.gql');
 export type EnemyData = {
     name: string;
+    unit: {
+        id: number;
+    };
 };
 export type RewardData = {
     rate: number;
+    count?: number;
     equipment?: {
         id: number;
         name: string;
