@@ -40,6 +40,7 @@ const config: webpack.Configuration = {
         }),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
+            title: 'PCR Quest Simulator',
             meta: {
                 viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
             },
