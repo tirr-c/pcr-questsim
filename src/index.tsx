@@ -13,6 +13,7 @@ ReactDOM.render(
 
 if (module.hot) {
     module.hot.dispose(() => {
+        ReactDOM.unmountComponentAtNode(app);
         document.body.removeChild(app);
     });
 }

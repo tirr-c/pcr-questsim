@@ -1,5 +1,6 @@
 import React from 'react';
 
+import DropIcon from './DropIcon';
 import { Drop } from './simulate';
 
 interface Props {
@@ -11,25 +12,19 @@ export default function SimulateResult(props: Props) {
     const totalMana = data.reduce((acc, reward) => acc + reward.mana, 0);
     const nodes = data.map((reward, idx) => {
         const drop = reward.drop;
-        let dropText = '';
-        if (drop.equipment != null) {
-            dropText = `equipment ${drop.equipment.name}[${drop.equipment.id}]`;
-        } else if (drop.item != null) {
-            dropText = `item ${drop.item.name}[${drop.item.id}]`;
+        let iconNode = undefined;
+        if (drop.equipment != null || drop.item != null) {
+            return <DropIcon key={idx} drop={drop} />;
         } else {
-            dropText = 'nothing';
+            return null;
         }
-        return (
-            <div key={idx}>
-                <div>{reward.enemy.name}</div>
-                <div>{dropText}</div>
-            </div>
-        );
-    });
+    }).filter(node => node != null);
 
     return (
         <>
-            {nodes}
+            <div>
+                {nodes}
+            </div>
             <div>Mana: {totalMana}</div>
         </>
     );

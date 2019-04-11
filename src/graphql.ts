@@ -47,6 +47,7 @@ export async function setupApolloClient(endpoint: string): Promise<Client> {
         headers: {
             'content-type': 'application/json',
         },
+        mode: 'cors',
         body: JSON.stringify({
             variables: {},
             query: `

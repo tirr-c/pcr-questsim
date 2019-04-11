@@ -24,6 +24,6 @@ function getBasePath(type: IconType): string {
 
 export default function Icon(props: Props) {
     const { iconId, type, ...imgProps } = props;
-    const url = new URL(`/${getBasePath(type)}/${iconId}.png`, AMES_STATICS);
+    const url = new URL(`/icons/${getBasePath(type)}/${iconId}.png`, AMES_STATICS);
     return <img {...imgProps} src={url.toString()} />;
 }

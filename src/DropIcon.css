@@ -1,0 +1,20 @@
+.container {
+    position: relative;
+    display: inline-block;
+    width: 96px;
+    height: 96px;
+}
+
+.container > img {
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    left: 0;
+    top: 0;
+}
+
+.container > .count {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+}

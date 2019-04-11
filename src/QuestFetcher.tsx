@@ -7,6 +7,7 @@ import { Drop, simulateQuestDrop } from './simulate';
 
 export default function QuestFetcher() {
     const { client } = React.useContext(GqlContext);
+    const [fetching, setFetching] = React.useState(false);
     const [partialName, setPartialName] = React.useState('');
     const [questType, setQuestType] = React.useState<'NORMAL' | 'HARD'>('NORMAL');
     const [dropsData, setDropsData] = React.useState<Drop[] | undefined>(undefined);
@@ -28,9 +29,11 @@ export default function QuestFetcher() {
             if (client == null) {
                 return;
             }
+            setFetching(true);
             const result = await getQuestDrops(client, partialName, questType);
             const drops = simulateQuestDrop(result.data);
             setDropsData(drops);
+            setFetching(false);
         },
         [client, partialName, questType],
     );
@@ -52,7 +55,7 @@ export default function QuestFetcher() {
                 <option value="NORMAL">노멀</option>
                 <option value="HARD">하드</option>
             </select>
-            <button disabled={client == null} onClick={handleFetchData}>
+            <button disabled={client == null || fetching} onClick={handleFetchData}>
                 {client == null ? '접속 중' : '실행'}
             </button>
             {dropsData != null && <SimulateResult data={dropsData} />}
