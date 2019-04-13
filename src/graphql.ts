@@ -28,6 +28,10 @@ export type RewardData = {
 };
 export type GetQuestDropsData = {
     quest: {
+        name: string;
+        area: {
+            type: 'NORMAL' | 'HARD' | 'ADVENTURE';
+        };
         waveGroups: {
             possibleWaves: {
                 rate: number;
@@ -38,7 +42,7 @@ export type GetQuestDropsData = {
                 }[];
             }[];
         }[];
-    };
+    } | null;
 };
 
 export async function setupApolloClient(endpoint: string): Promise<Client> {

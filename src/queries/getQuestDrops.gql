@@ -1,5 +1,9 @@
 query getQuestDrops($partialName: String!, $type: QuestAreaType!) {
     quest(partialName: $partialName, type: $type) {
+        name
+        area {
+            type
+        }
         waveGroups {
             possibleWaves {
                 rate

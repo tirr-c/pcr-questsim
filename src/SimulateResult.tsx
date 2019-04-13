@@ -20,12 +20,5 @@ export default function SimulateResult(props: Props) {
         }
     }).filter(node => node != null);
 
-    return (
-        <>
-            <div>
-                {nodes}
-            </div>
-            <div>Mana: {totalMana}</div>
-        </>
-    );
+    return <div>{nodes}</div>;
 }

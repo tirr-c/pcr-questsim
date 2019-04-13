@@ -1,0 +1,7 @@
+.query-form > label {
+    margin-right: 4px;
+}
+
+.error {
+    color: red;
+}

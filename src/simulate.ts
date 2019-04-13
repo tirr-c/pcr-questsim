@@ -26,6 +26,9 @@ function chooseOne<T extends Rated>(list: T[]): T {
 }
 
 export function simulateQuestDrop(data: GetQuestDropsData): Drop[] {
+    if (data.quest == null) {
+        throw new Error('퀘스트 정보가 없습니다.');
+    }
     const rewards = [];
     const groups = data.quest.waveGroups;
     for (let i = 0; i < groups.length; ++i) {
