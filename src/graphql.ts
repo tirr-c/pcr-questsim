@@ -5,7 +5,6 @@ import { HttpLink } from 'apollo-link-http';
 import gql from 'graphql-tag';
 
 export type Client = ApolloClient<NormalizedCacheObject>;
-export const GqlContext = React.createContext<{ client?: Client }>({ client: undefined });
 
 const gqlGetQuestDrops = require('./queries/getQuestDrops.gql');
 export type EnemyData = {

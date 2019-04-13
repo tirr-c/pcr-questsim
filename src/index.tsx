@@ -1,19 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
-import App from './App';
 
 const app = document.createElement('div');
+app.id = 'app';
 document.body.appendChild(app);
 
-ReactDOM.render(
-    <App />,
-    app,
-);
+Promise.all([
+    import(/* webpackPreload: true */ 'react-dom').then(module => module.default),
+    import(/* webpackPreload: true */ './App').then(module => module.default),
+]).then(([ReactDOM, App]) => {
+    ReactDOM.render(
+        <App />,
+        app,
+    );
 
-if (module.hot) {
-    module.hot.dispose(() => {
-        ReactDOM.unmountComponentAtNode(app);
-        document.body.removeChild(app);
-    });
-}
+    if (module.hot) {
+        module.hot.dispose(() => {
+            ReactDOM.unmountComponentAtNode(app);
+            document.body.removeChild(app);
+        });
+    }
+});

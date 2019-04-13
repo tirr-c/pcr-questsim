@@ -2,7 +2,8 @@ import React from 'react';
 
 import SimulateResult from './SimulateResult';
 
-import { GetQuestDropsData, GqlContext, getQuestDrops } from './graphql';
+import { GqlContext } from './context';
+import { GetQuestDropsData } from './graphql';
 import { Drop, simulateQuestDrop } from './simulate';
 
 import * as styles from './QuestFetcher.css';
@@ -58,6 +59,7 @@ export default function QuestFetcher() {
                 }
 
                 setFetching(true);
+                const { getQuestDrops } = await import('./graphql');
                 const result = await getQuestDrops(client, partialName, questType);
                 if (result.data.quest == null) {
                     throw new Error('퀘스트가 존재하지 않습니다.');
