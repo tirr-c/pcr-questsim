@@ -4,7 +4,6 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import postcssPresetEnv from 'postcss-preset-env';
-import CleanWebpackPlugin from 'clean-webpack-plugin';
 import WebpackBar from 'webpackbar';
 
 const amesEndpoint = process.env.AMES_ENDPOINT || 'https://ames.tirr.dev/graphql';
@@ -38,7 +37,6 @@ const config: webpack.Configuration = {
             AMES_ENDPOINT: JSON.stringify(amesEndpoint),
             AMES_STATICS: JSON.stringify(amesStatics),
         }),
-        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: '프리코네R 퀘스트 시뮬레이터',
             meta: {

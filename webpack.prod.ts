@@ -2,6 +2,7 @@ import * as path from 'path';
 
 import webpack from 'webpack';
 import merge from 'webpack-merge';
+import CleanWebpackPlugin from 'clean-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 import common, { makeCssConfig } from './webpack.common';
@@ -22,6 +23,7 @@ export default merge(common, {
         performance: true,
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: '[name].[hash].css',
             chunkFilename: '[id].[hash].css',
