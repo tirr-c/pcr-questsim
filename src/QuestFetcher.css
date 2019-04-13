@@ -5,3 +5,7 @@
 .error {
     color: red;
 }
+
+.trial-header {
+    margin: 12px 0 4px;
+}

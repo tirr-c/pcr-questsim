@@ -102,13 +102,23 @@ export default function QuestFetcher() {
                     value={repeatCount == null ? '' : String(repeatCount)}
                     onChange={handleRepeatCountChange}
                 />
+                <br />
                 <button disabled={client == null || fetching} onClick={handleFetchData}>
                     {client == null ? '접속 중' : '실행'}
                 </button>
             </div>
             {error != null && <div className={styles.error}>{error}</div>}
             {dropsData != null && (
-                dropsData.map(drops => <><hr /><SimulateResult data={drops} /></>)
+                <>
+                    <hr />
+                    <div>지역: {questName}</div>
+                    {dropsData.map((drops, idx) => (
+                        <>
+                            <h3 className={styles.trialHeader}>시행 {idx + 1}</h3>
+                            <SimulateResult data={drops} />
+                        </>
+                    ))}
+                </>
             )}
         </div>
     );
