@@ -15,7 +15,7 @@ export default function App() {
 
     return (
         <GqlContext.Provider value={{ client }}>
-            <h2>프리코네R 드랍 시뮬레이터</h2>
+            <h2>프리코네R 퀘스트 시뮬레이터</h2>
             <QuestFetcher />
         </GqlContext.Provider>
     );
