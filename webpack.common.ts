@@ -38,7 +38,9 @@ const config: webpack.Configuration = {
             AMES_STATICS: JSON.stringify(amesStatics),
         }),
         new HtmlWebpackPlugin({
+            template: 'index.html',
             title: '프리코네R 퀘스트 시뮬레이터',
+            description: '당신의 드랍운을 시험해 보세요.',
             meta: {
                 viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
             },
