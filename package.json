@@ -1,7 +1,7 @@
 {
-  "name": "pcrfarm",
+  "name": "pcr-questsim",
   "version": "0.1.0",
-  "repository": "https://github.com/tirr-c/pcrfarm.git",
+  "repository": "https://github.com/tirr-c/pcr-questsim.git",
   "author": "Wonwoo Choi <chwo9843@gmail.com>",
   "license": "MIT",
   "private": true,
