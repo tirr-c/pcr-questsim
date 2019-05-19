@@ -5,6 +5,7 @@
     "strict": true,
     "preserveConstEnums": true,
     "esModuleInterop": true,
+    "downlevelIteration": true,
     "typeRoots": [
       "node_modules/@types",
       "types"

@@ -4,7 +4,7 @@ import SimulateResult from './SimulateResult';
 
 import { GqlContext } from './context';
 import { GetQuestDropsData } from './graphql';
-import { Drop, simulateQuestDrop } from './simulate';
+import { Drop, simulateQuestDrop, sumDrops } from './simulate';
 
 import * as styles from './QuestFetcher.css';
 
@@ -16,6 +16,7 @@ export default function QuestFetcher() {
     const [repeatCount, setRepeatCount] = React.useState<number | undefined>(1);
     const [questName, setQuestName] = React.useState('');
     const [dropsData, setDropsData] = React.useState<Drop[][] | undefined>(undefined);
+    const [dropSum, setDropSum] = React.useState<Drop[] | undefined>(undefined);
     const [error, setError] = React.useState<string | undefined>(undefined);
 
     const handlePartialNameChange = React.useCallback(
@@ -65,8 +66,10 @@ export default function QuestFetcher() {
                     throw new Error('퀘스트가 존재하지 않습니다.');
                 }
                 const drops = Array.from({ length: repeatCount }, () => simulateQuestDrop(result.data));
+                const dropSum = drops.length > 1 ? sumDrops(drops) : undefined;
                 setQuestName(`${result.data.quest.name} ${result.data.quest.area.type}`);
                 setDropsData(drops);
+                setDropSum(dropSum);
             } catch (err) {
                 setError(err.message);
             }
@@ -112,11 +115,18 @@ export default function QuestFetcher() {
                 <>
                     <hr />
                     <div>지역: {questName}</div>
-                    {dropsData.map((drops, idx) => (
+                    {dropSum != null && (
                         <>
+                            <h3 className={styles.trialHeader}>종합</h3>
+                            <SimulateResult data={dropSum} />
+                            <hr />
+                        </>
+                    )}
+                    {dropsData.map((drops, idx) => (
+                        <React.Fragment key={idx}>
                             <h3 className={styles.trialHeader}>시행 {idx + 1}</h3>
                             <SimulateResult data={drops} />
-                        </>
+                        </React.Fragment>
                     ))}
                 </>
             )}
