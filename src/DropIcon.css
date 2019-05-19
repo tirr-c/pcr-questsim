@@ -18,4 +18,5 @@
     position: absolute;
     right: 8px;
     bottom: 8px;
+    text-shadow: 1px 1px white, -1px 1px white, 1px -1px white, -1px -1px white;
 }
