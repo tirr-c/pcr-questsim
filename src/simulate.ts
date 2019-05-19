@@ -16,11 +16,12 @@ export interface Drop {
 const rng = new random.Random(random.browserCrypto);
 
 function chooseOne<T extends Rated>(list: T[]): T {
-    const value = rng.realZeroToOneExclusive();
+    let value = rng.realZeroToOneExclusive();
     for (const item of list) {
         if (value < item.rate) {
             return item;
         }
+        value -= item.rate;
     }
     return list[list.length - 1];
 }
