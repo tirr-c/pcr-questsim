@@ -21,7 +21,12 @@ steps:
 - script: yarn build
   displayName: 'Run webpack'
 
-- task: PublishPipelineArtifact@0
+- task: AWSCLI@1
+  condition: eq(variables['build.sourceBranch'], 'refs/heads/master')
   inputs:
-    artifactName: 'questsimFrontend'
-    targetPath: dist
+    awsCredentials: 'azure-pipelines-pcr'
+    regionName: 'us-east-1'
+    awsCommand: 's3'
+    awsSubCommand: 'sync'
+    awsArguments: 'dist/ s3://pcr.tirr.dev/questsim/ --delete --acl public-read'
+  displayName: 'Deploy to S3'
