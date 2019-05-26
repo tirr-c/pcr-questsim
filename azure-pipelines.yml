@@ -21,12 +21,14 @@ steps:
 - script: yarn build
   displayName: 'Run webpack'
 
-- task: AWSCLI@1
+- task: S3Upload@1
   condition: eq(variables['build.sourceBranch'], 'refs/heads/master')
   inputs:
     awsCredentials: 'azure-pipelines-pcr'
     regionName: 'us-east-1'
-    awsCommand: 's3'
-    awsSubCommand: 'sync'
-    awsArguments: 'dist/ s3://pcr.tirr.dev/questsim/ --delete --acl public-read'
-  displayName: 'Deploy to S3'
+    bucketName: 'pcr.tirr.dev'
+    sourceFolder: 'dist'
+    globExpressions: '**'
+    targetFolder: 'questsim'
+    filesAcl: 'public-read'
+  displayName: 'Upload to S3'
