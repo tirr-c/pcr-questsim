@@ -20,3 +20,8 @@ steps:
 
 - script: yarn build
   displayName: 'Run webpack'
+
+- task: PublishPipelineArtifact@0
+  inputs:
+    artifactName: 'questsimFrontend'
+    targetPath: dist
